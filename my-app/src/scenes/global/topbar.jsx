@@ -19,7 +19,7 @@ const Topbar = () => {
     return (<Box display="flex" justifyContent="space-between" p={2}>
         {/*Search Bar*/}
         <Box display= "flex" 
-        backgroundColor={colors.primary[300]} 
+        backgroundColor={colors.primary[400]} 
         borderRadius = "3px"
         >
             <InputBase sx = {{ ml: 2, flex: 1}} placeholder = "Search"/>

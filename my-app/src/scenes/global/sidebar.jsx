@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ProSidebar, Menu, MenuItem} from "react-pro-sidebar";
-import 'react-pro-sidebar/dist/css/styles.css';
+import "react-pro-sidebar/dist/css/styles.css";
 import { Box, IconButton, Typography, useTheme} from '@mui/material';
 import { Link } from "react-router-dom";
 import { tokens } from "../../theme";
@@ -18,7 +18,16 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 
 
-
+const Item = () => ({ title, to, icon, selected, setSelected}) => {
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+    return (
+        <MenuItem active={selected === title}>
+            <Typography></Typography>
+            <Link />
+        </MenuItem>
+    )
+}
 
 
 
@@ -53,8 +62,11 @@ const Sidebar = () => {
         ></Box>
     );
     <Menu>
+
         <MenuItem>
         </MenuItem>
+
+
         {/*USER*/}
         {!isCollapsed && (
             <Box mb="25">
@@ -64,17 +76,31 @@ const Sidebar = () => {
                         width="100px"
                         height="100px"
                         src={`../../assets/user.png`}
-                        style={{ cursor: "pointer", borderRadius="50%"}}
+                        style={{ cursor: "pointer", borderRadius:"50%"}}
                     />
                 </Box>
-                <Box>
-                    <Typography>Mark Zucc</Typography>
+                <Box textAlign="center">
+                    <Typography variant="h2" 
+                    color={colors.grey[100]} 
+                    fontWeight="bold" 
+                    sx={{ m: "10px 0 0 0"}}
+                    >
+                    Mark Zucc
+                    </Typography>
+                    <Typography variant="h5" color={colors.greenAccent[500]}>
+                        Cool Guy
+                    </Typography>
                 </Box>
             </Box>
         )}
+
+
+
+        {/* MENU ITEMS*/}
+        <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+            
+        </Box>
     </Menu>
 
-
-};
 
 export default Sidebar;
