@@ -18,4 +18,6 @@ const Header = ({ title, subtitle}) => {
         {subtitle}
         </Typography>
     </Box>
-}
+};
+
+export default Header;
