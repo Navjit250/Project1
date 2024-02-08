@@ -1,8 +1,9 @@
 import { useState} from "react";
-import FullCalendar, { formatDate} from "@fullcalendar/react";
+import FullCalendar from "@fullcalendar/react";
+import { formatDate } from "@fullcalendar/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import interactionPLugin from "@fullcalendar/interaction";
+import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from "@fullcalendar/list";
 import {
     Box,
@@ -80,6 +81,36 @@ const Calendar = () => {
                         </ListItem>
                     ))}
                 </List>
+            </Box>
+
+            {/* CALENDAR */}
+            <Box flex="1 1 100%" ml="15px">
+                <FullCalendar 
+                    height="75vh"
+                    plugins={[
+                        dayGridPlugin,
+                        timeGridPlugin,
+                        interactionPlugin,
+                        listPlugin
+                    ]}
+                    headerToolbar={{
+                        left: "prev,next today",
+                        center: "title",
+                        right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
+                    }}
+                    initialView="dayGridMonth"
+                    editable={true}
+                    selectable={true}
+                    selectMirror={true}
+                    dayMaxEvents={true}
+                    select={handleDataClick}
+                    eventClick={handleEventClick}
+                    eventsSet={(events) => setCurrentEvents(events)}
+                    initialEvents={[
+                        {id: "1234", title: "All-day event", date: "2024-02-08"},
+                        {id: "4321", title: "Timed event", date: "2024-02-09"},
+                    ]}
+                />
             </Box>
         </Box>
     </Box>
